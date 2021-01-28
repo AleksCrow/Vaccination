@@ -1,7 +1,6 @@
 package com.voronkov.vaccination.service;
 
 import com.voronkov.vaccination.model.Vaccine;
-import javassist.NotFoundException;
 
 import java.util.List;
 

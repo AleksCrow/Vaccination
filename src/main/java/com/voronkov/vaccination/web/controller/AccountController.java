@@ -24,7 +24,7 @@ public class AccountController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public User get(@AuthenticationPrincipal AuthUser authUser) {
-        return authUser.getUser();
+        return userService.findById(authUser.id());
     }
 
     @DeleteMapping

@@ -50,10 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/api/account/register").anonymous()
-                .antMatchers("/api/account").hasRole(Role.USER.name())
-                .antMatchers("/api/**").hasRole(Role.ADMIN.name())
-                .and().httpBasic()
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .antMatchers("/api/**").authenticated()
                 .and().csrf().disable();
+
+        http.formLogin()
+                .permitAll().defaultSuccessUrl("/api/account")
+                .permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/login");
     }
 }

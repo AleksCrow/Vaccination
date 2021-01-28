@@ -17,6 +17,7 @@ import java.util.Objects;
 @ToString
 public class BaseEntity implements Persistable<Long> {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
