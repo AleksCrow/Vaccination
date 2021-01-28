@@ -3,8 +3,6 @@ package com.voronkov.vaccination.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,10 +15,10 @@ import java.time.LocalDate;
 @ToString(exclude = {"user"})
 public class Vaccination extends BaseEntity {
 
-    @Transient
+    @Column(name = "disease_name")
     private String diseaseName;
 
-    @Transient
+    @Column(name = "vaccine_name")
     private String vaccineName;
 
     @JsonIgnore
@@ -41,18 +39,12 @@ public class Vaccination extends BaseEntity {
     @Column(name = "planned_vaccination_date")
     private LocalDate plannedVaccinationDate;
 
-    public Vaccination(User user, Vaccine vaccine, LocalDate vaccinationDate, LocalDate plannedVaccinationDate) {
+    public Vaccination(User user, Vaccine vaccine, String vaccineName, String diseaseName, LocalDate vaccinationDate, LocalDate plannedVaccinationDate) {
         this.user = user;
         this.vaccine = vaccine;
+        this.vaccineName = vaccineName;
+        this.diseaseName = diseaseName;
         this.vaccinationDate = vaccinationDate;
         this.plannedVaccinationDate = plannedVaccinationDate;
-    }
-
-    public String getDiseaseName() {
-        return vaccine.getDiseaseName();
-    }
-
-    public String getVaccineName() {
-        return vaccine.getVaccineName();
     }
 }

@@ -30,7 +30,6 @@ public class Vaccine extends BaseEntity {
     private String vaccineName;
 
     @Column(name = "age")
-    @NotNull
     private int age;
 
     @JsonIgnore

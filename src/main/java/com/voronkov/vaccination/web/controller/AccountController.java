@@ -38,7 +38,7 @@ public class AccountController {
     public ResponseEntity<User> register(@Valid @RequestBody User user) {
         User created = userService.register(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/api/account")
+                        .path("/api/vaccinations")
                         .build().toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
@@ -52,6 +52,7 @@ public class AccountController {
         if (user.getPassword() == null) {
             user.setPassword(oldUser.getPassword());
         }
+
         userService.update(user);
     }
 }

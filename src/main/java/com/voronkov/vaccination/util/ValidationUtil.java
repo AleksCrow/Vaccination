@@ -2,6 +2,7 @@ package com.voronkov.vaccination.util;
 
 import com.voronkov.vaccination.error.IllegalRequestDataException;
 import com.voronkov.vaccination.model.BaseEntity;
+import com.voronkov.vaccination.model.Vaccination;
 
 public class ValidationUtil {
 

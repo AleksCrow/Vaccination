@@ -1,9 +1,8 @@
 package com.voronkov.vaccination.config;
 
-import com.voronkov.vaccination.web.AuthUser;
-import com.voronkov.vaccination.model.Role;
 import com.voronkov.vaccination.model.User;
 import com.voronkov.vaccination.repository.UserRepository;
+import com.voronkov.vaccination.web.AuthUser;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +27,17 @@ import java.util.Optional;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static final PasswordEncoder PASSWORD_ENCODER = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
     private final UserRepository userRepository;
 
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
-                log.debug("Authenticating '{}'", email);
-                Optional<User> optionalUser = userRepository.findByEmailIgnoreCase(email);
-                return new AuthUser(optionalUser.orElseThrow(
-                                () -> new UsernameNotFoundException("User '" + email + "' was not found")));
-            };
+            log.debug("Authenticating '{}'", email);
+            Optional<User> optionalUser = userRepository.findByEmailIgnoreCase(email);
+            return new AuthUser(optionalUser.orElseThrow(
+                            () -> new UsernameNotFoundException("User '" + email + "' was not found")));
+        };
     }
 
     @Autowired
@@ -50,13 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/api/account/register").anonymous()
-                .antMatchers("/api/**").authenticated()
-                .and().csrf().disable();
-
-        http.formLogin()
-                .permitAll().defaultSuccessUrl("/api/account")
-                .permitAll()
+                .antMatchers("/api/vaccinations/**").authenticated()
+                .and().httpBasic()
                 .and()
-                .logout().logoutSuccessUrl("/login");
+                .formLogin()
+                .permitAll().defaultSuccessUrl("/api/account")
+                .and()
+                .logout().logoutSuccessUrl("/login")
+                .and().csrf().disable();
     }
 }

@@ -8,7 +8,7 @@ public interface UserService {
 
     void update(User user);
 
-    User findById(long id);
+    User findById(Long id);
 
     User findByEmail(String email);
 

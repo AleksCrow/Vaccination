@@ -25,7 +25,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@ToString(callSuper = true, exclude = {"password"})
+@ToString(callSuper = true, exclude = {"password", "vaccinations"})
 public class User extends BaseEntity implements Serializable {
 
     @Column(name = "email", nullable = false, unique = true)
@@ -49,7 +49,6 @@ public class User extends BaseEntity implements Serializable {
     private String password;
 
     @Column(name = "birth_date", columnDefinition = "DATE")
-    @NotNull
     private LocalDate birthDate;
 
     @JsonIgnore
@@ -59,6 +58,7 @@ public class User extends BaseEntity implements Serializable {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Vaccination> vaccinations;
