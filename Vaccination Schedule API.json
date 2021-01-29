@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"test@tests.com\",\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Test\",\r\n  \"birthDate\": \"2020-12-20\",\r\n  \"password\": \"test\"\r\n}",
+							"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"firstName\": \"New_First\",\r\n  \"lastName\": \"New_Last\",\r\n  \"birthDate\": \"2021-01-28\",\r\n  \"password\": \"test\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,13 +95,13 @@
 							"type": "basic",
 							"basic": [
 								{
-									"key": "username",
-									"value": "user2@gmail.com",
+									"key": "password",
+									"value": "1234",
 									"type": "string"
 								},
 								{
-									"key": "password",
-									"value": "1234",
+									"key": "username",
+									"value": "user@gmail.com",
 									"type": "string"
 								}
 							]
@@ -110,7 +110,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"user15@gmail.com\",\r\n  \"firstName\": \"New_First\",\r\n  \"lastName\": \"New_Last\",\r\n  \"birthDate\": \"2021-01-28\"\r\n}\r\n",
+							"raw": "{\r\n  \"email\": \"user15@gmfail.com\",\r\n  \"firstName\": \"New_First\",\r\n  \"lastName\": \"New_Last\",\r\n  \"birthDate\": \"2021-01-28\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
