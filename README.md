@@ -1,5 +1,7 @@
 # Vaccination schedule API
-Spring boot, rest api, maven, postgresql, spring security. 
+##### Spring boot, rest api, maven, postgresql, spring security. 
 
-###Setup:
-Add db with name: "vaccination", owner: "user", password: "root"
+### Setup:
+In postgres add DB with name: "vaccination", owner: "user", password: "root"
+
+Collection requests for Postman - 
